@@ -1,0 +1,61 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('./wp2597345.webp'); 
+    background-size:cover;
+    background-position: left top; 
+}
+
+.button {
+    width: 66px;
+    padding: 20px;
+    margin: 0 3px;
+    border: 2px solid black;
+    border-radius: 9px;
+    cursor: pointer;
+    color: black;
+    font-weight:800;
+    background-color:coral;
+    font-size: medium;
+}
+
+.row {
+    margin: 8px 0;
+}
+
+.row input {
+    width: 291px;
+    font-size: 20px;
+    margin: 0;
+    padding: 10px 0px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mx-auto {
+    margin: auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 200px; 
+}

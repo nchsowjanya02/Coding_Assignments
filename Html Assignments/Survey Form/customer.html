@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ff6699, #ff3366);
+            text-align: center;
+          
+            color: rgba(0, 0, 0, 0.6);
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #ff3366;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="date"],
+        select,
+        input[type="email"],
+        input[type="tel"] {
+            width: 80%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ff3366;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="checkbox"] {
+            margin-top: 5px;
+        }
+        select {
+            border: 1px solid #ff3366;
+            border-radius: 5px;
+        }
+        button {
+            background: #ff3366;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #ff6699;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Survey</h1>
+        <form id="surveyForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" placeholder="Enter your first name" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" placeholder="Enter your last name" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required>
+
+            <label for="country">Country:</label>
+            <select id="country" required>
+                <option value="Select">Select Your Country</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="UK">UK</option>
+                <!-- Add more options as needed -->
+            </select>
+
+            <label>Gender:</label>
+            <input type="checkbox" name="gender" value="Male"> Male
+            <input type="checkbox" name="gender" value="Female"> Female
+            <input type="checkbox" name="gender" value="Other"> Other
+
+            <label for="profession">Profession:</label>
+            <input type="text" id="profession" placeholder="Enter your Profession" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <label for="mobileNumber">Mobile Number:</label>
+            <input type="tel" id="mobileNumber" placeholder="Enter your number" required>
+
+            <button type="button" onclick="submitForm()">Submit</button>
+            <button type="button" onclick="resetForm()">Reset</button>
+        </form>
+    </div>
+    <script>
+        function submitForm() {
+         
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var dob = document.getElementById("dob").value;
+            var country = document.getElementById("country").value;
+            var gender = document.querySelectorAll('input[name="gender"]:checked');
+            var profession = document.getElementById("profession").value;
+            var email = document.getElementById("email").value;
+            var mobileNumber = document.getElementById("mobileNumber").value;
+
+         
+            if (firstName === "" || lastName === "" || dob === "" || country === "" || gender.length === 0 || profession === "" || email === "" || mobileNumber === "") {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+          
+            var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+            if (!email.match(emailRegex)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+  
+            var mobileRegex = /^\d{10}$/;
+            if (!mobileNumber.match(mobileRegex)) {
+                alert("Please enter a valid 10-digit mobile number.");
+                return;
+            }
+
+          
+            var popupContent = "First Name: " + firstName + "\n";
+            popupContent += "Last Name: " + lastName + "\n";
+            popupContent += "Date of Birth: " + dob + "\n";
+            popupContent += "Country: " + country + "\n";
+            popupContent += "Gender: " + gender[0].value + "\n";
+            popupContent += "Profession: " + profession + "\n";
+            popupContent += "Email: " + email + "\n";
+            popupContent += "Mobile Number: " + mobileNumber;
+
+            alert(popupContent);
+
+          
+            document.getElementById("surveyForm").reset();
+        }
+
+        function resetForm() {
+            document.getElementById("surveyForm").reset();
+        }
+    </script>
+</body>
+</html>
